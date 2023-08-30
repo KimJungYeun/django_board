@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if question %}
+<br>
+  <ul class="list-group">
+    <li class="list-group-item active" aria-current="true">제  목 : {{question.question_title}}</li>
+    <li class="list-group-item">작성일 : {{question.question_date}}</li>
+    <li class="list-group-item">작성자 : {{question.user_email}}</li>
+    <li class="list-group-item">내  용 : {{question.question_content}}</li>
+  </ul>
+{% endif %}
+<p>
+<table>
+    <tr>
+        <td>
+            <form  action ="/board/question_update/{{question.question_id}}/">
+                <button onclick="alert('질문을 수정하시겠습니까?')" class="btn btn-dark">질문수정</button>
+            </form>
+        </td>
+        <td>
+            <form method="POST" action ="/board/question_delete/{{question.question_id}}/">
+                <button onclick="alert('질문을 삭제하시겠습니까?')" class="btn btn-dark">질문삭제</button>
+            </form>
+        </td>
+    </tr>
+</table>
+</p>
+
+<hr>
+<h3>Answer</h3>
+<p>
+    <form method="POST" action="/board/answer_create/{{question.question_id}}/">
+        <button aria-label="답변등록" class="btn btn-dark">답변등록</button>
+    </form>
+</p>
+
+{% if alist %}
+    <ol>
+       {% for answer in alist%}
+       <li><a href ="#">{{answer.answer_title}}:{{answer.answer_date}}:{{answer.user_email}}</a></li>
+       {% endfor %}
+    </ol>
+{% endif %}
+
+{%endblock%}

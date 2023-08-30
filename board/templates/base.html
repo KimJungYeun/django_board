@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}인공지능12기{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.css' %}">
+    <script scr="{ static 'bootstrap.js'%}"></script>  
+</head>
+<body margin:5px>
+
+  {% include 'navbar.html' %}
+
+  {% block content %}
+  {% endblock %}
+
+</body>
+</html>
+  

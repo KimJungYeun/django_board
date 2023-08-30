@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1> Question List</h1>
+    {% if qlist %}
+    <table class="table table-striped">
+        {% for item in qlist%}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td><a href ="/board/question_detail/{{item.question_id}}/">{{item.question_title}}</a></td>
+                <td>{{item.question_date}} </td>
+                <td>{{item.user_email}} </td>              
+            </tr>
+            {% endfor %}
+    </table>
+    {% endif %}
+    <p><button type="button" onclick="location.href='/board/question_create/' "  class="btn btn-dark">질문등록</button></p>
+{% endblock %}
